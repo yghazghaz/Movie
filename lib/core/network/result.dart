@@ -1,11 +1,13 @@
+import '../error/failure.dart';
+
 sealed class ApiResult<T> {}
 
 class ApiSuccess<T> extends ApiResult<T> {
-  final T? data;
+  final T data;
   ApiSuccess(this.data);
 }
 
 class ApiError<T> extends ApiResult<T> {
-  final String error;
-  ApiError(this.error);
+  final Failure failure;
+  ApiError(this.failure);
 }
