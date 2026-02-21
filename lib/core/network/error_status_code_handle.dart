@@ -5,21 +5,23 @@ class ErrorStatusCodeHandle {
     switch (statusCode) {
       case 401:
         return const UnauthorizedFailure();
-
       case 404:
         return const NotFoundFailure();
-
       case 429:
-        return const ServerFailure("Too many requests");
-
+        return const ServerFailure(
+          "Too many requests \nPlease wait a moment before trying again",
+        );
       case 500:
       case 502:
       case 503:
       case 504:
-        return const ServerFailure("Server unavailable");
-
+        return const ServerFailure(
+          "Server unavailable \nOur servers are currently busy. Try again later.",
+        );
       default:
-        return ServerFailure("Unexpected error ($statusCode)");
+        return const ServerFailure(
+          "An unexpected error occurred. Please try again.",
+        );
     }
   }
 }

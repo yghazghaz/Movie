@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:movie/core/di/di.dart';
+
 import 'package:movie/features/app_section/app_section.dart';
+import 'package:movie/features/details/presentation/view/details_screen.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  configureDependencies();
   runApp(MyApp());
 }
 
@@ -17,6 +22,9 @@ class MyApp extends StatelessWidget {
       splitScreenMode: true,
       builder: (_, child) {
         return MaterialApp(
+          routes: {
+            DetailsScreen.routeName: (_) => const DetailsScreen(),
+          },
           home: AppSection(),
           debugShowCheckedModeBanner: false,
         );
