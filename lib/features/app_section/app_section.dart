@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:movie/features/app_section/widgets/custom_bottom_nav_bar.dart';
-import 'package:movie/features/home/presentation/pages/home_screen.dart';
+import 'package:movie/features/home/presentation/view/home_screen.dart';
 import 'package:movie/features/search/presentation/pages/search_screen.dart';
-import 'package:movie/features/watch_list/presentation/pages/watch_list_screen.dart';
+import 'package:movie/features/watch_list/presentation/pages/watchlist_screen.dart';
 
-class AppSection extends StatefulWidget {
-  const AppSection({super.key});
+class App extends StatefulWidget {
+  const App({super.key});
   static const routeName = '/app';
 
   @override
-  State<AppSection> createState() => _AppSectionState();
+  State<App> createState() => _AppState();
 }
 
-class _AppSectionState extends State<AppSection> {
+class _AppState extends State<App> {
   int _currentIndex = 0;
 
   final List<Widget> _screens = const [

@@ -1,6 +1,6 @@
 abstract class AppStrings {
   static const String popular = 'Popular';
-  static const String release = 'Release';
+  static const String releases = 'Releases';
   static const String recommended = 'Recommended';
   static const String home = 'Home';
   static const String search = 'Search';

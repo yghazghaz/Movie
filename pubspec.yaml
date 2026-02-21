@@ -42,6 +42,9 @@ dependencies:
   flutter_screenutil: ^5.9.3
   get_it: ^9.2.0
   injectable: ^2.7.1+4
+  flutter_bloc: ^9.1.1
+  cached_network_image: ^3.4.1
+  hive_flutter: 
 
 dev_dependencies:
   flutter_test:
