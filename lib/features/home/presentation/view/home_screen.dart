@@ -134,7 +134,7 @@ class _HomeScreenState extends State<HomeScreen> {
               Container(
                 alignment: Alignment.topLeft,
                 child: Text(
-                  AppStrings.realese,
+                  AppStrings.releases,
                   style: TextStyle(
                     color: AppColors.white,
                     fontSize: 20,
