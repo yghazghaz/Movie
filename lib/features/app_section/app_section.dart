@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:movie/features/app_section/widgets/custom_bottom_nav_bar.dart';
 import 'package:movie/features/home/presentation/pages/home_screen.dart';
-import 'package:movie/features/search/presentation/pages/search_screen.dart';
+import 'package:movie/features/search/presentation/view/screens/search_screen.dart';
 import 'package:movie/features/watch_list/presentation/pages/watch_list_screen.dart';
 
 class AppSection extends StatefulWidget {
