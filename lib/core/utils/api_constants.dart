@@ -9,4 +9,5 @@ abstract class ApiConstants {
   static const String apiSearchEndpoint = "/3/search/movie";
   static const String apiGenreIdEndPoint =
       "/3/discover/movie?include_adult=true&sort_by=vote_count.desc";
+  static const String imagePath = "https://image.tmdb.org/t/p/w500";
 }

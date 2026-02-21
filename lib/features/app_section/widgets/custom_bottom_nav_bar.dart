@@ -38,7 +38,7 @@ class CustomBottomNavBar extends StatelessWidget {
               width: MediaQuery.of(context).size.width / 3,
               height: 2,
               decoration: const BoxDecoration(
-                color: AppColors.selected,
+                color: AppColors.blue,
                 borderRadius: BorderRadius.only(
                   bottomLeft: Radius.circular(2),
                   bottomRight: Radius.circular(2),
@@ -94,6 +94,8 @@ class _NavItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final color = isSelected ? AppColors.selected : AppColors.gray;
+
     return Expanded(
       child: InkWell(
         onTap: onTap,
@@ -102,25 +104,29 @@ class _NavItem extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SvgPicture.asset(
-              isSelected ? selectedIconPath : iconPath,
-              key: ValueKey('$isSelected-$label'),
-              width: 24,
-              height: 24,
-              colorFilter: ColorFilter.mode(
-                isSelected ? AppColors.selected : AppColors.gray,
-                BlendMode.srcIn,
+            AnimatedSwitcher(
+              duration: const Duration(milliseconds: 200),
+              transitionBuilder: (child, animation) {
+                return ScaleTransition(scale: animation, child: child);
+              },
+              child: SvgPicture.asset(
+                isSelected ? selectedIconPath : iconPath,
+                key: ValueKey('$isSelected-$label'),
+                width: 24,
+                height: 24,
+                colorFilter: ColorFilter.mode(color, BlendMode.srcIn),
               ),
             ),
             const SizedBox(height: 4),
-            Text(
-              label,
+            AnimatedDefaultTextStyle(
+              duration: const Duration(milliseconds: 200),
               style: TextStyle(
-                color: isSelected ? AppColors.selected : AppColors.gray,
+                color: color,
                 fontSize: 12,
-                fontWeight: FontWeight.w500,
+                fontWeight: isSelected ? FontWeight.w500 : FontWeight.normal,
+                fontFamily: AppStrings.fontPoppins,
               ),
-              textAlign: TextAlign.center,
+              child: Text(label, textAlign: TextAlign.center),
             ),
           ],
         ),

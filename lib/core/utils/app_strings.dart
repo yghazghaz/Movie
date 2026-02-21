@@ -1,5 +1,7 @@
 abstract class AppStrings {
   static const String popular = 'Popular';
+  static const String realese = 'Realese';
+  static const String recommended = 'Recommended';
   static const String home = 'Home';
   static const String search = 'Search';
   static const String watchList = 'Watch list';
