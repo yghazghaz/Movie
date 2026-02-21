@@ -15,7 +15,7 @@ class HomeApi {
     try {
       Uri url = Uri.https(
         ApiConstants.apiBaseUrl,
-        ApiConstants.apiPopularEndPoint,
+        ApiConstants.apiRecommendEndPoint,
         {"api_key": ApiConstants.apiKey},
       );
 
@@ -104,5 +104,3 @@ class HomeApi {
     }
   }
 }
-
-
