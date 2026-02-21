@@ -1,25 +1,28 @@
+import 'package:hive/hive.dart';
 import 'package:movie/core/utils/app_hive.dart';
 import 'package:movie/features/watch_list/domain/entities/watch_list_entity.dart';
-import 'package:hive/hive.dart';
 
 class WatchListModel extends WatchListEntity {
   const WatchListModel({
     required super.id,
     required super.title,
+    super.runtime,
     super.posterPath,
     super.backdropPath,
     super.releaseDate,
-    super.voteAverage,
+    super.voteAverage, required super.genreIds,
   });
 
   factory WatchListModel.fromEntity(WatchListEntity entity) {
     return WatchListModel(
       id: entity.id,
       title: entity.title,
+      runtime: entity.runtime,
       posterPath: entity.posterPath,
       backdropPath: entity.backdropPath,
       releaseDate: entity.releaseDate,
-      voteAverage: entity.voteAverage,
+      voteAverage: entity.voteAverage, genreIds:entity.genreIds,
+      
     );
   }
 }
@@ -31,12 +34,14 @@ class WatchListModelAdapter extends TypeAdapter<WatchListModel> {
   @override
   WatchListModel read(BinaryReader reader) {
     return WatchListModel(
-      id: reader.read() as int,
-      title: reader.read() as String,
-      posterPath: reader.read() as String?,
-      backdropPath: reader.read() as String?,
-      releaseDate: reader.read() as String?,
-      voteAverage: reader.read() as double?,
+      id: reader.read() ,
+      title: reader.read() ,
+      runtime: reader.read(),
+      posterPath: reader.read() ,
+      backdropPath: reader.read() ,
+      releaseDate: reader.read() ,
+      voteAverage: reader.read(), 
+      genreIds:reader.read(),
     );
   }
 
@@ -45,9 +50,11 @@ class WatchListModelAdapter extends TypeAdapter<WatchListModel> {
     writer
       ..write(obj.id)
       ..write(obj.title)
+      ..write(obj.runtime)
       ..write(obj.posterPath)
       ..write(obj.backdropPath)
       ..write(obj.releaseDate)
-      ..write(obj.voteAverage);
+      ..write(obj.voteAverage)
+      ..write(obj.genreIds);
   }
 }

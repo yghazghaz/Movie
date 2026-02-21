@@ -1,16 +1,15 @@
+// ignore_for_file: unnecessary_underscores
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movie/core/utils/app_colors.dart';
 import 'package:movie/core/utils/app_strings.dart';
-
-import 'package:movie/features/watch_list/data/models/watch_list_model.dart';
-
+import 'package:movie/core/utils/genre_constants.dart';
 import 'package:movie/features/watch_list/presentation/view/widget/watch_list_empty.dart';
-import 'package:movie/features/watch_list/presentation/view/widget/watch_list_item.dart'
-    show WatchListItem;
+import 'package:movie/features/watch_list/presentation/view/widget/watch_list_item.dart';
 import 'package:movie/features/watch_list/presentation/view_model/watch_list_cubit.dart';
-import 'package:movie/features/watch_list/presentation/view_model/watch_list_state.dart'
-    show WatchListState, WatchListError, WatchListLoading;
+import 'package:movie/features/watch_list/presentation/view_model/watch_list_state.dart';
 
 class WatchListScreen extends StatelessWidget {
   const WatchListScreen({super.key});
@@ -21,10 +20,10 @@ class WatchListScreen extends StatelessWidget {
       backgroundColor: AppColors.primary,
       appBar: AppBar(
         backgroundColor: AppColors.primary,
-        title: const Text(
+        title: Text(
           AppStrings.watchList,
           style: TextStyle(
-            fontSize: 16,
+            fontSize: 16.sp,
             fontWeight: FontWeight.w600,
             color: AppColors.white,
           ),
@@ -39,11 +38,11 @@ class WatchListScreen extends StatelessWidget {
             );
           }
           final items = state.items;
+
           if (items.isEmpty) {
             return const WatchListEmpty();
           }
           final listView = ListView.separated(
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
             itemBuilder: (context, index) {
               final item = items[index];
               return WatchListItem(
@@ -52,12 +51,15 @@ class WatchListScreen extends StatelessWidget {
                 onRemove: () =>
                     context.read<WatchListCubit>().removeMovie(item.id),
                 movieTitle: item.title,
-                movieType: item.title,
+                movieType: item.genreIds != null && item.genreIds!.isNotEmpty
+                    ? GenreConstants.movieGenres[item.genreIds!.first]
+                    : "Unknown",
+                movieDuration: item.runtime?.toInt(),
                 movieRate: item.voteAverage,
-                movieDate: item.releaseDate,
+                movieDate: _extractYear(item.releaseDate),
               );
             },
-            separatorBuilder: (_, __) => const SizedBox(height: 12),
+            separatorBuilder: (_, __) => SizedBox(height: 12.h),
             itemCount: items.length,
           );
           if (state is WatchListLoading) {
@@ -97,4 +99,18 @@ class WatchListScreen extends StatelessWidget {
       ),
     );
   }
+
+String _extractYear(String? date) {
+  if (date == null || date.trim().isEmpty) {
+    return "N/A";
+  }
+
+  final parsedDate = DateTime.tryParse(date.trim());
+
+  if (parsedDate == null) {
+    return "N/A";
+  }
+
+  return parsedDate.year.toString();
+}
 }

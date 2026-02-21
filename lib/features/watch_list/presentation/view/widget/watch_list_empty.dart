@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movie/core/utils/app_colors.dart';
 import 'package:movie/core/utils/app_images.dart';
-import 'package:movie/core/utils/app_strings.dart' show AppStrings;
+import 'package:movie/core/utils/app_strings.dart' ;
 
 class WatchListEmpty extends StatelessWidget {
   const WatchListEmpty({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
     return Center(
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 32),
+        padding:  EdgeInsets.symmetric(horizontal: 32.h),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset(AppImages.noSavedMovies),
-            const SizedBox(height: 16),
+             SizedBox(height: 16.h),
             Text(
               AppStrings.watchListEmptyTitle,
               style: TextStyle(
@@ -26,11 +26,11 @@ class WatchListEmpty extends StatelessWidget {
               ),
               textAlign: TextAlign.center,
             ),
-            const SizedBox(height: 8),
+             SizedBox(height: 8.h),
             Text(
               AppStrings.watchListEmptySubtitle,
               style: TextStyle(
-                fontSize: 12,
+                fontSize: 12.sp,
                 fontWeight: FontWeight.w500,
                 color: AppColors.gray,
               ),
