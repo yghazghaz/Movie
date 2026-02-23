@@ -13,8 +13,10 @@ import 'package:movie/features/details/presentation/view/widgets/movie_poster_ti
 import 'package:movie/features/details/presentation/view/widgets/movie_related_list_custom_widget.dart';
 import 'package:movie/features/details/presentation/view_model/details_cubit.dart';
 import 'package:movie/features/details/presentation/view_model/details_state.dart';
-
 import 'package:toastification/toastification.dart';
+
+import '../../../watch_list/data/models/watch_list_model.dart';
+import '../../../watch_list/presentation/view_model/watch_list_cubit.dart';
 
 class DetailsScreen extends StatefulWidget {
   const DetailsScreen({super.key});
@@ -191,14 +193,5 @@ class _DetailsScreenState extends State<DetailsScreen> {
         ),
       ),
     );
-import 'package:flutter/material.dart';
-
-class DetailsScreen extends StatelessWidget {
-  const DetailsScreen({super.key});
-  static String routeName = 'DetailsScreen';
-
-  @override
-  Widget build(BuildContext context) {
-    return const Placeholder();
   }
 }
