@@ -7,13 +7,17 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:movie/features/watch_list/data/repo/data_sources_impl/data_source_impl.dart';
+import 'package:movie/features/watch_list/data/repo/repositories_impl/witch_list_repo_impl.dart';
 
 import 'package:movie/main.dart';
 
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
+    final localDataSource = WatchListLocalDataSourceImpl();
+  final repository = WatchListRepositoryImpl(localDataSource);
     // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+    await tester.pumpWidget(MovieApp(repository: repository,));
 
     // Verify that our counter starts at 0.
     expect(find.text('0'), findsOneWidget);
