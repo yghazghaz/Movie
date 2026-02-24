@@ -7,9 +7,10 @@ import 'package:movie/features/details/presentation/view/details_screen.dart';
 
 import 'package:skeletonizer/skeletonizer.dart';
 
+
 class CustomPosterWidget extends StatelessWidget {
   const CustomPosterWidget({super.key, this.state});
-  final state;
+  final    state;
   @override
   Widget build(BuildContext context) {
     return ListView.separated(

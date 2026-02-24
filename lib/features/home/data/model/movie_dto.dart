@@ -1,4 +1,4 @@
-import 'package:movie/features/home/domain/entites/recommended_movies_entites.dart';
+import 'package:movie/features/home/domain/entities/recommended_movies_entities.dart';
 
 class MoviesDto {
   int? page;
@@ -19,8 +19,8 @@ class MoviesDto {
     totalPages = json['total_pages'];
     totalResults = json['total_results'];
   }
-  MoviesEntites toEntity() =>
-      MoviesEntites(results: results?.map((e) => e.toEntity()).toList() ?? []);
+  MoviesEntities toEntity() =>
+      MoviesEntities(results: results?.map((e) => e.toEntity()).toList() ?? []);
 }
 
 class ResultsDto {

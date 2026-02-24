@@ -1,4 +1,4 @@
-import 'package:movie/features/home/domain/entites/recommended_movies_entites.dart';
+import 'package:movie/features/home/domain/entities/recommended_movies_entities.dart';
 
 sealed class HomeState {}
 

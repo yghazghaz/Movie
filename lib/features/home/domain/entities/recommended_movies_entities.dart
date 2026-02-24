@@ -1,10 +1,10 @@
-class MoviesEntites {
+class MoviesEntities {
   int? page;
   List<ResultsEntity>? results;
   int? totalPages;
   int? totalResults;
 
-  MoviesEntites({this.page, this.results, this.totalPages, this.totalResults});
+  MoviesEntities({this.page, this.results, this.totalPages, this.totalResults});
 }
 
 class ResultsEntity {

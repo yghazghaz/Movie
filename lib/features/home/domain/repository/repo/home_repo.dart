@@ -1,8 +1,8 @@
 import 'package:movie/core/network/result.dart';
-import 'package:movie/features/home/domain/entites/recommended_movies_entites.dart';
+import 'package:movie/features/home/domain/entities/recommended_movies_entities.dart';
 
 abstract class HomeRepo {
-  Future<ApiResult<MoviesEntites>> getRecommendedMovies();
-  Future<ApiResult<MoviesEntites>> getPopularMovies();
-  Future<ApiResult<MoviesEntites>> getReleasesMovies();
+  Future<ApiResult<MoviesEntities>> getRecommendedMovies();
+  Future<ApiResult<MoviesEntities>> getPopularMovies();
+  Future<ApiResult<MoviesEntities>> getReleasesMovies();
 }

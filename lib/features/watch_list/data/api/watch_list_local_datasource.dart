@@ -1,4 +1,4 @@
-import 'package:hive/hive.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:movie/core/utils/app_hive.dart';
 import 'package:movie/features/watch_list/data/models/watch_list_model.dart';
 
